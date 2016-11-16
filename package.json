@@ -1,0 +1,27 @@
+{
+  "name": "sand-docs",
+  "version": "1.0.0",
+  "description": "SandJS Docs",
+  "main": "index.js",
+  "scripts": {
+    "docs": "gitbook serve",
+    "deploy": "bash ./build/update-docs.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandJS/docs.git"
+  },
+  "keywords": [
+    "Sand"
+  ],
+  "author": "Kevin Smithson <ksmithson@sazze.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandJS/docs/issues"
+  },
+  "homepage": "https://github.com/SandJS/docs#readme",
+  "devDependencies": {
+    "gitbook-plugin-edit-link": "^2.0.2",
+    "gitbook-plugin-github": "^2.0.0"
+  }
+}

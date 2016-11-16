@@ -1,0 +1,19 @@
+{
+  "gitbook": ">3.0.0",
+  "plugins": ["edit-link", "github"],
+  "pluginsConfig": {
+    "edit-link": {
+      "base": "https://github.com/sandjs/docs/tree/master",
+      "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/sandjs/sand"
+    }
+  },
+  "links": {
+    "sharing": {
+      "facebook": false,
+      "twitter": false
+    }
+  }
+}
