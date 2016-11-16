@@ -1,0 +1,370 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    HTTP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="http/controller.html">
+            
+                <a href="http/controller.html">
+            
+                    
+                    Controllers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="http/routes.html">
+            
+                <a href="http/routes.html">
+            
+                    
+                    Routes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="http/views.html">
+            
+                <a href="http/views.html">
+            
+                    
+                    Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Introduction</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="sand-js--">Sand JS <a href="https://travis-ci.org/SandJS/sand" target="_blank"><img src="https://travis-ci.org/SandJS/sand.svg?branch=master" alt="Build Status"></a> <a href="http://badge.fury.io/js/sand" target="_blank"><img src="https://badge.fury.io/js/sand.svg" alt="npm version"></a></h1>
+<h3 id="what-is-sand">What is Sand?</h3>
+<p>Sand is a lightweight, all-purpose Javascript application framework. Sand provides a simple, yet robust, application lifecycle and many pluggable clients and libraries. A Sand application loads only the clients and libraries that it requires to do its job, allowing the application to be as simple as possible.</p>
+<h3 id="why-sand">Why Sand?</h3>
+<p>In 3 words, <strong>Sand is simple</strong>.</p>
+<p>You can create <strong>ANY</strong> kind of Node.js application, script, or service using Sand.</p>
+<p>The simplest Sand application is shown below.</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">var</span> Sand = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;sand&apos;</span>);
+<span class="hljs-keyword">new</span> Sand().start(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Hello, World!&apos;</span>);
+});
+</code></pre>
+<p>Sand comes with many pre-built plugins supporting <a href="https://github.com/pocketly/sand-mysql" target="_blank">MySQL</a>, <a href="https://github.com/SandJS/elasticsearch" target="_blank">ElasticSearch</a>, <a href="https://github.com/pocketly/sand-memcache" target="_blank">Memcache</a>, <a href="https://github.com/SandJS/redis" target="_blank">Redis</a>, <a href="https://github.com/SandJS/riak" target="_blank">Riak</a>, <a href="https://github.com/SandJS/session" target="_blank">Sessions</a>, and <a href="https://github.com/SandJS" target="_blank">many</a> <a href="https://github.com/pocketly" target="_blank">more</a>.</p>
+<h3 id="whos-using-sand">Who&apos;s using Sand?</h3>
+<ul>
+<li><a href="http://pocketly.com" target="_blank">Pocketly</a></li>
+<li><a href="https://getwhym.com" target="_blank">Whym</a></li>
+<li><a href="https://www.blackfriday.fm" target="_blank">Blackfriday.fm</a></li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<p>Sand uses some ES6 features and so we require node v4 and above.</p>
+<h3 id="show-me-the-code">Show me the code!</h3>
+<p>See the <a href="https://github.com/SandJS/examples" target="_blank">examples repository</a>.</p>
+<h3 id="miscellaneous-resources--gotchas-regarding-ecmascript-6">Miscellaneous Resources &amp; Gotchas regarding EcmaScript 6</h3>
+<ul>
+<li>For a brief description of EcmaScript 6 Features, see <a href="https://github.com/lukehoban/es6features" target="_blank">here</a>.</li>
+<li>For more information on ES6 in io.js, see <a href="https://iojs.org/en/es6.html" target="_blank">here</a>.</li>
+<li>You will notice that many of the source files of Sand require <code>&quot;use strict&quot;</code> for compatibility with certain recently added keywords such as <code>let</code>, <code>const</code>, <code>class</code> and others.</li>
+</ul>
+<h3 id="getting-started">Getting Started</h3>
+<p>Sand has two components. The Sand core and the Sand Grain. These two components are tied together by the application lifecycle.</p>
+<h4 id="sand-core--application-lifecycle">Sand Core &amp; Application Lifecycle</h4>
+<p>The core of every Sand application is the <a href="https://www.npmjs.com/package/sand" target="_blank">sand</a> module.</p>
+<p>Sand was built to orchestrate an application&apos;s <strong>intitialization</strong>, <strong>startup</strong>, and <strong>shutdown</strong>. These are the three phases in the Sand application lifecycle.</p>
+<ol>
+<li><p>The <strong>Initialization</strong> phase loads configuration and prepares the application to receive requests. The function <code>Sand#init(function() { // ... })</code> allows you to initialize or preload any resources your app requires before starting.</p>
+</li>
+<li><p>The <strong>Startup</strong> phase starts the application. The <code>start</code> event will be fired on application startup. The function <code>Sand#start(function() { // ... })</code> starts the application and accepts an optional callback function as an argument. Note that the callback function is called <strong>after</strong> the application starts.</p>
+</li>
+<li><p>The <strong>Shutdown</strong> phase gracefully closes down the application. The <code>shutdown</code> event will be fired on application shutdown.</p>
+</li>
+</ol>
+<p>Every application has access to the <code>sand</code> global variable which holds references to all the grains that your app has loaded.</p>
+<h4 id="sand-grains">Sand Grains</h4>
+<p>A Sand Grain is small piece of functionality required by an application. It is usually a client or library wrapper that autoloads its own configuration and provides convenience functions.</p>
+<p>Sand grains have the same three events as the app lifecycle. The Sand core calls the <code>SandGrain#init</code> and <code>SandGrain#shutdown</code> methods on each sand grain.</p>
+<p>A basic sand grain looks like this.</p>
+<pre><code class="lang-JavaScript"><span class="hljs-meta">&quot;use strict&quot;</span>;
+
+<span class="hljs-keyword">const</span> SandGrain = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;sand-grain&apos;</span>);
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cheese</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SandGrain</span> </span>{
+
+  <span class="hljs-keyword">constructor</span>() {
+    <span class="hljs-keyword">super</span>();
+    <span class="hljs-keyword">this</span>.name = <span class="hljs-string">&apos;cheese&apos;</span>; <span class="hljs-comment">// the logging name</span>
+    <span class="hljs-keyword">this</span>.configName = <span class="hljs-string">&apos;cheese&apos;</span>; <span class="hljs-comment">// the name of its configuration file</span>
+    <span class="hljs-keyword">this</span>.defaultConfig = {cheese: <span class="hljs-string">&apos;white cheddar&apos;</span>}; <span class="hljs-comment">// a default config object when no config is specified</span>
+    <span class="hljs-keyword">this</span>.version = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;./package&apos;</span>).version; <span class="hljs-comment">// sets the grain&apos;s version</span>
+  }
+
+  init(config, done) {
+    <span class="hljs-keyword">super</span>.init(config); <span class="hljs-comment">// this must be called</span>
+
+    <span class="hljs-comment">// configure your grain here</span>
+    <span class="hljs-comment">// `this.config` holds the config object for this grain</span>
+
+    <span class="hljs-keyword">this</span>.log(<span class="hljs-string">`I&apos;m initializing! :D`</span>);
+    done(); <span class="hljs-comment">// indicates that this grain is done initializing</span>
+  }
+
+  shutdown(done) {
+    <span class="hljs-keyword">this</span>.log(<span class="hljs-string">`I&apos;m shutting down! :(`</span>);
+    <span class="hljs-comment">// do shutdown stuff here (i.e. close the server gracefully, etc)</span>
+    done();
+  }
+
+  jusEatinMyCheese() {
+    <span class="hljs-keyword">this</span>.log(<span class="hljs-string">`Jus&apos; eatin&apos; my <span class="hljs-subst">${this.config.cheese}</span>!`</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;ok? ok!&apos;</span>;
+  }
+}
+
+<span class="hljs-built_in">module</span>.exports = Cheese;
+</code></pre>
+<p>Every Sand Grain gets loaded onto the <code>sand</code> global variable on initialization.</p>
+<p>Import any sand Grain into your application using the <code>Sand#use</code> function before you call <code>Sand#start</code>.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"HTTP","level":"1.2","depth":1,"ref":"","articles":[{"title":"Controllers","level":"1.2.1","depth":2,"path":"http/controller.md","ref":"http/controller.md","articles":[]},{"title":"Routes","level":"1.2.2","depth":2,"path":"http/routes.md","ref":"http/routes.md","articles":[]},{"title":"Views","level":"1.2.3","depth":2,"path":"http/views.md","ref":"http/views.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"Edit This Page","base":"https://github.com/sandjs/docs/tree/master"},"github":{"url":"https://github.com/sandjs/sand"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"facebook":false,"twitter":false}},"gitbook":">3.0.0"},"file":{"path":"README.md","mtime":"2016-11-16T16:55:27.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-11-16T17:06:40.648Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

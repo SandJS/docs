@@ -1,0 +1,336 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Controllers · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="routes.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    HTTP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="controller.html">
+            
+                <a href="controller.html">
+            
+                    
+                    Controllers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="routes.html">
+            
+                <a href="routes.html">
+            
+                    
+                    Routes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="views.html">
+            
+                <a href="views.html">
+            
+                    
+                    Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Controllers</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="controllers">Controllers</h1>
+<h2 id="overview">Overview</h2>
+<p>Controllers are first class objects in a Sand application. They are responsible for responding to requests from a web browser, mobile application or any other system capable of communicating with a server. They often act as a middleman between your models and <a href="views.html">views</a>. For many applications, the controllers will contain the bulk of your project&#x2019;s <a href="https://en.wikipedia.org/wiki/Business_logic" target="_blank">business logic</a>.</p>
+<h2 id="actions">Actions</h2>
+<p>Controllers are comprised of a collection of methods called <em>actions</em>. Action methods can be bound to routes in your application so that when a client requests the route, the bound method is executed to perform some business logic and (in most cases) generate a response. For example, the <code>GET /hello</code> route in your application could be bound to a method like:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> *hello() {
+    <span class="hljs-keyword">this</span>.send(<span class="hljs-string">&apos;Hello World&apos;</span>);
+}
+</code></pre>
+<p>so that any time a web browser is pointed to the <code>/hello</code> URL on your app&apos;s server, the page displays the message <em>&quot;Hello World&quot;</em>.</p>
+<h3 id="before">Before</h3>
+<p><em>Before</em> methods are special actions that <strong>always</strong> get called <strong>before</strong> your action, hence the name. You can define a before method like so:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> *before() {}
+</code></pre>
+<p>If your <em>controller</em> extends a parent then you can call the parents <em>before</em> with a: </p>
+<pre><code class="lang-js"><span class="hljs-keyword">yield</span> <span class="hljs-keyword">super</span>.before();
+</code></pre>
+<p>Its important to note that your action will be called as soon as the child before method returns. So make sure that if you have <em>asynchronous</em> checks to make sure that you <code>yield</code> them, otherwise your action may be called <em>prematurely</em>  Now there are a couple of helper methods to get around this fact.</p>
+<h4 id="thisexit">this.exit()</h4>
+<p>Calling <code>this.exit()</code> will immediately exit your before and <strong>not</strong> call your <em>action</em>. Use this aftere you have already sent the <em>response</em> in your before and want to exit early.</p>
+<h4 id="thisskip">this.skip()</h4>
+<p>Calling <code>this.skip()</code> will skip <strong>all</strong> remaining before functions and go straight into executing your action.  This is useful for when you have made a decision in an early <em>before</em> like a base controller and don&apos;t want to continue up the before chain.</p>
+<h2 id="where-are-controllers-defined">Where are Controllers defined?</h2>
+<p>By default they are defined in the <code>controllers/</code> folder. This can be changed with the <code>http.controllerPath</code> config option. By convention Sand controllers are <a href="http://c2.com/cgi/wiki?PascalCase" target="_blank">Pascal Cased</a>, so that every word in the filename (including the first word) is capitalized: for example, <code>User.js</code>, <code>MyController.js</code>, <code>SuperAwesomeController.js</code> are all valid Pascal Cased names.</p>
+<p>You may organize your controllers into groups by saving them in subfolders of <code>controllers</code>, however note that the subfolder name will become part of the Controller&#x2019;s identity when used for routing (more on that in the &quot;<a href="">Routing</a>&quot; section).</p>
+<h2 id="what-do-controllers-look-like">What do Controllers look like?</h2>
+<p>A controller file defines a javascript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes" target="_blank">class</a> where the <em>static</em> methods are <em>actions</em>. Here is a simple example of a full controller file.</p>
+<pre><code class="lang-js"><span class="hljs-meta">&quot;use strict&quot;</span>;
+
+<span class="hljs-keyword">const</span> Controller = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;sand-http&apos;</span>).Controller;
+
+<span class="hljs-built_in">module</span>.export = <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Controller</span> </span>{
+    <span class="hljs-keyword">static</span> *hi() {
+        <span class="hljs-keyword">this</span>.send(<span class="hljs-string">&apos;Hello World&apos;</span>);
+    }
+};
+</code></pre>
+<p>Now it may be weird to see that <code>this</code> in a <em>static</em> function.  All actions are bound to a <a href="">Context</a> object. For those familiar with <a href="http://expressjs.com/" target="_blank">express.js</a>, the context object contains many of the functions used with express, since sand is built on top of express.</p>
+<h2 id="thin-controllers">&quot;Thin&quot; Controllers</h2>
+<p>Most MVC frameworks recommend writing <em>&quot;thin&quot;</em> controllers, and while Sand is no exception (it is a good idea to keep your Sand controllers as simple as possible) it is also helpful to understand &quot;why?&quot;</p>
+<p>Controller code is inherently dependent on some sort of trigger or event. In a backend framework like Sand, this event is almost always an incoming request. So if you write a bunch of code in one of your controller actions, it is not uncommon for that code&apos;s scope to be dependent on the &quot;request context&quot;. Which is fine...until you want to use that code from a slightly different action, or from the command line.</p>
+<p>So the goal of the &quot;thin controller&quot; philosophy is to encourage decoupling of reusable code from any related scope entanglements. In Sand, you can achieve this in a number of different ways, but the most common strategies for extrapolating code from controllers are:</p>
+<ul>
+<li>Write a custom model method to encapsulate some code that performs a particular task relating to a particular model</li>
+<li>Write a service as a function to encapsulate some code that performs a particular application-specific task</li>
+<li>If you find some code which is useful across multiple different applications (and you have time to do this), you should extract it into a node module. Then you can share it across your organization, use it in future projects, or better yet, publish it on <a href="http://npmjs.org" target="_blank">npm</a> under a permissive open-source license for other developers to use and help maintain.</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                
+                <a href="routes.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Routes">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Controllers","level":"1.2.1","depth":2,"next":{"title":"Routes","level":"1.2.2","depth":2,"path":"http/routes.md","ref":"http/routes.md","articles":[]},"previous":{"title":"HTTP","level":"1.2","depth":1,"ref":"","articles":[{"title":"Controllers","level":"1.2.1","depth":2,"path":"http/controller.md","ref":"http/controller.md","articles":[]},{"title":"Routes","level":"1.2.2","depth":2,"path":"http/routes.md","ref":"http/routes.md","articles":[]},{"title":"Views","level":"1.2.3","depth":2,"path":"http/views.md","ref":"http/views.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"Edit This Page","base":"https://github.com/sandjs/docs/tree/master"},"github":{"url":"https://github.com/sandjs/sand"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"facebook":false,"twitter":false}},"gitbook":">3.0.0"},"file":{"path":"http/controller.md","mtime":"2016-11-16T16:56:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-11-16T17:06:40.648Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

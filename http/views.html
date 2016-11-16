@@ -1,0 +1,370 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Views · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.2">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="routes.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    HTTP
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="controller.html">
+            
+                <a href="controller.html">
+            
+                    
+                    Controllers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="routes.html">
+            
+                <a href="routes.html">
+            
+                    
+                    Routes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="views.html">
+            
+                <a href="views.html">
+            
+                    
+                    Views
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Views</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="views">Views</h1>
+<h2 id="overview">Overview</h2>
+<p>In Sand, views are markup templates that are compiled on the server into HTML pages. In most cases, views are used as the response to an incoming HTTP request, e.g. to serve your home page.</p>
+<h2 id="creating-a-view">Creating a view</h2>
+<p>By default, Sand is configured to use EJS (Embedded Javascript) as its view engine. The syntax for EJS is highly conventional- if you&apos;ve worked with php, asp, erb, gsp, jsp, etc., you&apos;ll immediately know what you&apos;re doing.</p>
+<p>If you prefer to use a different view engine, there are a multitude of options. Sand supports all of the view engines compatible with Express.</p>
+<p>Views are defined in your app&apos;s <code>views/</code> folder by default, but like all of the default paths in Sand, they are <a href="">configurable</a>. If you don&apos;t need to serve dynamic HTML pages at all (say, if you&apos;re building an API for a mobile app), you can remove the directory from your app.</p>
+<h2 id="compiling-a-view">Compiling a view</h2>
+<p>Anywhere you can access the <a href="">Context</a> object (i.e. controller action, before) you can use <code>this.render()</code> to compile one of your views, this automatically sends the HTML down to the user.</p>
+<h2 id="layouts">Layouts</h2>
+<p>When building an app with many different pages, it can be helpful to extrapolate markup shared by several HTML files into a layout. This <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">reduces the total amount of code</a> in your project and helps you avoid making the same changes in multiple files down the road.</p>
+<h3 id="creating-layouts">Creating Layouts</h3>
+<p>Sand layouts are special <code>.ejs</code> files in your app&apos;s <code>views/layout</code> folder you can use to &quot;wrap&quot; or &quot;sandwich&quot; other views. Layouts usually contain the preamble (e.g. <code>!DOCTYPE html&lt;html&gt;&lt;head&gt;....&lt;/head&gt;&lt;body&gt;</code>) and conclusion (<code>&lt;/body&gt;&lt;/html</code>). Then the original view file is included using <code>&lt;%- body %&gt;</code>. Layouts are never used without a view- that would be like serving someone a bread sandwich.</p>
+<p>Layout support for your app can be configured or disabled in <code>config/http.js</code>, and can be overridden for a particular route or action by setting special data called <code>layout</code>. By default, Sand will compile all views using the layout specified in <code>http.view.layout</code>, which is <code>false</code> by default.</p>
+<p>To specify what layout a view uses, see the example below.</p>
+<p>The example controller action below will use the view located at <code>/views/users/profile.ejs</code> within the layout located at <code>/views/layout/users.ejs</code></p>
+<pre><code class="lang-js"><span class="hljs-keyword">static</span> *profile() {
+  <span class="hljs-keyword">this</span>.render(<span class="hljs-string">&apos;user/profile&apos;</span>, {layout: <span class="hljs-string">&apos;users&apos;</span>});
+}
+</code></pre>
+<h3 id="data--locals">Data / Locals</h3>
+<p>The variables accessible in a particular view are called <strong>data or locals</strong>. Locals represent server-side data that is accessible to your view -- locals are not actually included in the compiled HTML unless you explicitly reference them using special syntax provided by your view engine.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello, <span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">name</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h4 id="using-locals-in-your-views">Using locals in your views</h4>
+<p>The notation for accessing locals varies between view engines. In EJS, you use special template markup (e.g. <code>&lt;%= someValue %&gt;</code>) to include locals in your views.</p>
+<p>There are three kinds of template tags in EJS:</p>
+<ul>
+<li><code>&lt;%= someValue %&gt;</code><ul>
+<li>HTML-escapes the <code>someValue</code> local, and then includes it as a string. </li>
+</ul>
+</li>
+<li><code>&lt;%- someRawHTML %&gt;</code><ul>
+<li>Includes the <code>someRawHTML</code> local verbatim, without escaping it.</li>
+<li>Be careful! This tag can make you vulnerable to XSS attacks if you don&apos;t know what you&apos;re doing.</li>
+</ul>
+</li>
+<li><code>&lt;% if (!loggedIn) { %&gt; &lt;a&gt;Logout&lt;/a&gt; &lt;% } %&gt;</code><ul>
+<li>Runs the javascript inside the <code>&lt;% ... %&gt;</code> when the view is compiled.</li>
+<li>Useful for conditionals (<code>if/else</code>), and looping over data (<code>for/each</code>).</li>
+</ul>
+</li>
+</ul>
+<p>Here&apos;s an example of a view (views/users/cheeseProfile.ejs) using two locals, user and cheeses:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">user.name</span> %&gt;</span>&apos;s Cheeses<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>My stinky cheese collection:<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> <span class="hljs-attr">for</span> (<span class="hljs-attr">var</span> <span class="hljs-attr">cheese</span> <span class="hljs-attr">of</span> <span class="hljs-attr">cheeses</span>) { %&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">%=</span> <span class="hljs-attr">chese.name</span> %&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">%</span> }) %&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Assuming we hooked up our route to one of our controller&apos;s actions (and our models were set up), we might send down our view like this:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// in controllers/User.js...</span>
+
+  <span class="hljs-keyword">static</span> *cheeseProfile() {
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-keyword">this</span>.render(<span class="hljs-string">&apos;users/cheeseProfile&apos;</span>, {
+      user: theUser,
+      cheeses: theUser.cheesesCollection
+    });
+  }
+
+<span class="hljs-comment">// ...</span>
+</code></pre>
+<h3 id="css">CSS</h3>
+<ul>
+<li><code>printCSS</code>: Accepts an array of css files and loads them from the public/css directory. </li>
+<li><code>css</code>: Loads all other css files requested with <code>view.css</code> </li>
+<li><code>view.css</code>: Accepts an array of css files from the public/css directory that are required for the template.</li>
+</ul>
+<h6 id="example">Example</h6>
+<pre><code class="lang-ejs">//In main template
+&lt;%- printCSS([&apos;lib/bootstrap.min&apos;, &apos;lib/font-awesome.min&apos;, &apos;main&apos;])%&gt;
+&lt;%- css %&gt;
+
+//In a template included in main template
+&lt;% view.css([&apos;product&apos;]) %&gt;
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="routes.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Routes">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Views","level":"1.2.3","depth":2,"previous":{"title":"Routes","level":"1.2.2","depth":2,"path":"http/routes.md","ref":"http/routes.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"Edit This Page","base":"https://github.com/sandjs/docs/tree/master"},"github":{"url":"https://github.com/sandjs/sand"},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":false,"twitter":false,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"links":{"sharing":{"facebook":false,"twitter":false}},"gitbook":">3.0.0"},"file":{"path":"http/views.md","mtime":"2016-11-16T16:18:32.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2016-11-16T17:06:40.648Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
